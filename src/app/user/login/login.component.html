@@ -1,0 +1,29 @@
+
+
+<div class="container">
+  <h1>LOGIN</h1>
+  <div class="auth-container">
+    <form class="auth-form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="auth-full-width">
+        <input matInput placeholder="Email" type="email" formControlName="email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="password" id="password" type="password" formControlName="password" placeholder="password" [type]="hide ? 'password' : 'text'"
+          required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!authForm.valid">login</button>
+
+    </form>
+  </div>
+  <br>
+  <a routerLink="/forgot" routerLinkActive="active" >forgot password</a>
+  <br>
+  <a  routerLink="/signup" routerLinkActive="active">Registration</a>
+  <br><br>
+  <!-- <div>
+    <div class="g-signin2"  data-onsuccess="onSignIn"></div>
+  </div> -->
+  <!-- <div><button (click)="googleLogin()" > google</button></div> -->
+</div>

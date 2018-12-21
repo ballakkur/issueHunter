@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <span  (click)="gotoDashboard()" class="hov"> Bug Hunter</span>
+  &nbsp;&nbsp; 
+  <button mat-raised-button  routerLink="/search" routerLinkActive="active" >Search</button> 
+  &nbsp;&nbsp;
+  <button mat-raised-button  routerLink="/description/1" *ngIf = "router.url ==='/dashboard'" routerLinkActive="active" >Report Bug</button> 
+  <span class="b-spacer"></span>
+&nbsp;
+<button mat-raised-button  routerLink="/noti" routerLinkActive="active" >Notification</button>  
+&nbsp;
+<button mat-raised-button (click)="logout()">Logout</button>  
+</mat-toolbar>

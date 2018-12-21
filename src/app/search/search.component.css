@@ -1,0 +1,31 @@
+
+.example-form-field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-form-field > * {
+    width: 100%;
+  }
+  .example-form-field {
+  padding: 20px;
+}
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+.data-table{
+  width: 80%;
+  margin: 20px auto;
+}
+.hov:hover{
+  cursor: pointer;
+}

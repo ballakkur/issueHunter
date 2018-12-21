@@ -1,0 +1,6 @@
+.b-spacer {
+    flex: 1 1 auto;
+  }
+.hov:hover{
+    cursor: pointer;
+}

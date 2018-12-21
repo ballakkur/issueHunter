@@ -1,0 +1,26 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+
+  .comment-container > * {
+    width: 100%;
+
+  }
+  .icn:hover{
+    cursor: pointer;
+    
+  }
+  .example-form-field {
+    width: 200px;
+  }
+  .pad{
+    padding: 10px;
+  }
+  

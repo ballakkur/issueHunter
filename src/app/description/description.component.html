@@ -1,0 +1,97 @@
+<app-navbar></app-navbar>
+<div class="container">
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <div class="example-container">
+      <mat-form-field>
+        <input matInput formControlName="title" required placeholder="Title">
+      </mat-form-field>
+      {{name}}
+
+      <!--  <mat-form-field>
+          <textarea [(ngModel)]="description"  matInput placeholder="Description"></textarea>
+        </mat-form-field> -->
+      <!-- <quill-editor [modules]="quillConfig" (ready)="onEditorCreated($event)" formControlName="description"> -->
+      <quill-editor [modules]="quillConfig" formControlName="description">
+
+      </quill-editor>
+      <!-- <editor apiKey="test"  [(ngModel)]="description" [init]="{plugins: 'link'}"></editor> -->
+
+      {{description}}
+      <div>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+      <mat-form-field>
+        <mat-select formControlName="status" placeholder="status" required>
+          <mat-option value="backlog">backlog</mat-option>
+          <mat-option value="in-progress">in-progress</mat-option>
+          <mat-option value="in-test">in-test</mat-option>
+          <mat-option value="done">done</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select formControlName="assignTo" placeholder="assign">
+          <mat-option *ngFor="let user of users" selected value="{{user.userId}}">{{user.firstName}} {{user.lastName}}</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+      <!-- <select class="custom-select" formControlName="assignTo" placeholder="assign">
+            <option *ngFor="let user of users" selected value="{{user.userId}}">{{user.firstName}} {{user.lastName}}</option>
+          </select> -->
+      <!-- image or screenshot upload -->
+      <input type="file" (change)="onFileSelected($event)">
+      <span *ngIf="download">
+        &nbsp;
+        <a href={{download}}>
+            <mat-icon matTooltip='downlaod attachment' aria-label="Button that">cloud_download</mat-icon>
+        </a>
+        
+      </span>
+
+      &nbsp;
+      <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">{{updateOrNot}}</button>
+    </div>
+  </form>
+
+  <div class="example-container">
+    <div class="col-md-1 com-sm-1 icn" *ngIf="wtId">
+      <mat-icon matTooltip="watch this issue" (click)="addWatcher()" aria-label="Button that">
+        visibility
+      </mat-icon>
+    </div>
+    <div class="col-md-12">
+      <ul>
+        <li *ngFor="let a of watcher">{{a}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-container" *ngIf="wtId">
+    <mat-form-field class="example-form-field">
+      <input matInput type="text" (keyup.enter)="addComment()" placeholder="Comment here" [(ngModel)]="value">
+      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <span>
+      <button (click)="addComment()" mat-raised-button color="primary" type="submit">comment</button>
+
+    </span>
+    <div>
+      <br>
+      <div class="container" *ngFor="let comment of comments">
+        <mat-icon matTooltip={{comment.commentatorName}} aria-label="Button that">
+          account_box
+        </mat-icon>
+        {{comment.commentatorName}}
+        <div class="container pad">
+
+          {{comment.comment}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
